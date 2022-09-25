@@ -1,6 +1,6 @@
 <template>
   <div class="m-4 mb-20">
-    <h1 class="text-2xl text-center">Class Settings</h1>
+    <h1 class="text-xl text-center">Add students to Class</h1>
 
     <div class="form-control mt-4">
       <div class="input-group">

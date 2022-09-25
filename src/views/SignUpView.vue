@@ -1,6 +1,7 @@
 <script setup>
 import useAuthUser from "@/composables/UseAuthUser";
-// import ok from "../composables/test"
+import { sidebarOpen } from "../composables/store"
+
 import { ref } from 'vue'
 
 const { register } = useAuthUser()
@@ -12,7 +13,9 @@ const credentials = ref({
 
 const eventSignup = () => {
   try {
+    sidebarOpen.value = true
     register(credentials.value)
+
   }
   catch (error) {
     console.log(error)
@@ -42,3 +45,6 @@ const eventSignup = () => {
     </div>
   </div>
 </template>
+
+
+

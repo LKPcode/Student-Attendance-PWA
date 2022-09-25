@@ -38,7 +38,8 @@ const eventLogin = () => {
       <div class="form-control mt-4">
         <label class="input-group">
           <span>Password</span>
-          <input v-model="credentials.password" type="text" placeholder="password" class="input input-bordered grow" />
+          <input v-model="credentials.password" type="password" placeholder="password"
+            class="input input-bordered grow" />
         </label>
       </div>
       <button class="btn btn-primary w-full mt-4" @click="eventLogin">Log in</button>

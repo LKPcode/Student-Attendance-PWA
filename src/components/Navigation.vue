@@ -6,7 +6,7 @@
       <div class="flex-1">
 
         <label for="my-drawer" class="btn btn-ghost normal-case text-xl">
-          Attendance
+          {{navTitle}}
         </label>
 
 
@@ -21,12 +21,14 @@
           </svg>
         </label>
 
+
+
       </div>
     </div>
 
     <!-- SIDEBAR DRAWER -->
     <div class="drawer fixed ">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <input id="my-drawer" v-model="sidebarOpen" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
         <slot>
           <!-- Page content here -->
@@ -38,8 +40,11 @@
           <!-- Sidebar content here -->
 
           <li v-for="_class in classes" :key="_class.id" class="flex-row justify-between items-center">
-            <router-link class="grow" :to="'/class/'+ _class.id"> {{_class.name}} </router-link>
-            <router-link class="btn btn-square btn-ghost" :to="'/class-settings/'+ _class.id">
+            <router-link class="grow" :to="'/class/'+ _class.id" @click="navTitle = _class.name; sidebarOpen = false">
+              {{_class.name}}
+            </router-link>
+            <router-link class="btn btn-square btn-ghost" :to="'/class-settings/'+ _class.id"
+              @click="navTitle = _class.name;  sidebarOpen = false">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 class="inline-block w-5 h-5 stroke-current">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -59,6 +64,8 @@
         </ul>
 
 
+
+
       </div>
     </div>
   </div>
@@ -69,6 +76,8 @@
 import useSupabase from "@/composables/UseSupabase";
 import { ref } from "vue"
 import useAuthUser from "@/composables/UseAuthUser";
+import { navTitle, sidebarOpen } from "@/composables/store"
+
 
 const { supabase } = useSupabase()
 const { user } = useAuthUser()
